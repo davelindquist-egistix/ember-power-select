@@ -111,7 +111,7 @@ export default @tagName('') @layout(templateLayout) class PowerSelect extends Co
       return null;
   }
   set selected(selected) {
-    if (selected && !(selected instanceof ObjectProxy) && get(selected, 'then')) {
+    if (selected && get(selected, 'then')) {
       this._updateSelectedTask.perform(selected);
     } else {
       scheduleOnce('actions', this, this.updateSelection, selected);
